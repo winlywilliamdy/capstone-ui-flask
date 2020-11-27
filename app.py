@@ -135,12 +135,14 @@ def index():
     casual_game = playstore[(playstore['Category'] == 'GAME') & (playstore['Genres'] == 'Casual')]
     X = casual_game.sort_values('Installs', ascending = False).head()[['App', 'Rating']]
 
-    fig = plt.figure(figsize=(10,5),dpi=300)
+    fig = plt.figure(figsize=(24,12),dpi=300)
     fig.add_subplot()
-    plt.barh(y = X['App'], width = X['Rating'])
-    plt.title('Top 5 Installed Casual Games and Its Rating')
-    plt.xlabel('Reviews')
-    plt.ylabel('App Name')
+    plt.barh(X['App'],X['Rating'])
+    plt.xlabel('Reviews', size = 20)
+    plt.ylabel('App Name', size = 20)
+    plt.xticks(size = 20)
+    plt.yticks(size = 20)
+    
 
     plt.savefig('result4.png',bbox_inches="tight")
 
